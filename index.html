@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Visit Nkombo Island | David Imanishimwe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#f5f7fa;color:#222;transition:.4s}
+body.dark{background:#0d1b2a;color:#eee}
+header{
+position:fixed;top:0;width:100%;
+display:flex;justify-content:space-between;
+align-items:center;padding:15px 8%;
+background:rgba(0,0,0,.75);
+z-index:1000
+}
+.logo{color:#fff;font-size:28px;font-weight:700}
+nav a{
+color:white;text-decoration:none;
+margin:0 10px;font-size:15px
+}
+.toggle{
+background:#00b4d8;color:#fff;border:none;
+padding:8px 15px;border-radius:20px;
+cursor:pointer
+}
+.slider{
+height:100vh;overflow:hidden;position:relative
+}
+.slide{
+position:absolute;width:100%;height:100%;
+background-size:cover;background-position:center;
+animation:fade 18s infinite
+}
+.slide:nth-child(1){
+background-image:url("images/hero1.jpg");
+animation-delay:0s}
+.slide:nth-child(2){
+background-image:url("images/hero2.jpg");
+animation-delay:6s}
+.slide:nth-child(3){
+background-image:url("images/hero3.jpg");
+animation-delay:12s}
+@keyframes fade{
+0%,100%{opacity:0}
+10%,30%{opacity:1}
+40%{opacity:0}
+}
+.overlay{
+position:absolute;inset:0;
+background:rgba(0,0,0,.45);
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+color:white;text-align:center;padding:20px
+}
+.overlay h1{font-size:55px}
+.overlay p{margin:20px;font-size:20px}
+.btn{
+background:#0096c7;color:white;
+padding:14px 28px;border-radius:40px;
+text-decoration:none
+}
+section{padding:80px 8%}
+h2{
+text-align:center;margin-bottom:30px;
+color:#0077b6
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px
+}
+.card{
+background:white;border-radius:15px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,.15)
+}
+body.dark .card{background:#1b263b}
+.card img{
+width:100%;height:200px;object-fit:cover
+}
+.card h3{padding:15px}
+.card p{padding:0 15px 20px}
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:12px
+}
+.gallery img{
+width:100%;height:170px;
+object-fit:cover;border-radius:12px
+}
+.weather{
+max-width:500px;margin:auto;
+background:#caf0f8;padding:25px;
+border-radius:15px;text-align:center
+}
+body.dark .weather{
+background:#243b55
+}
+form{
+max-width:700px;margin:auto;
+display:grid;gap:15px
+}
+input,select,textarea{
+padding:14px;border-radius:8px;
+border:1px solid #ccc
+}
+button{
+padding:15px;background:#009966;
+color:white;border:none;
+border-radius:8px;font-size:16px;
+cursor:pointer
+}
+.payment{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px
+}
+.pay{
+background:white;padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.12)
+}
+body.dark .pay{background:#1b263b}
+.dashboard{
+background:#001d3d;color:white;
+padding:25px;border-radius:15px
+}
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+text-align:center;gap:10px
+}
+footer{
+background:#001219;color:white;
+text-align:center;padding:35px
+}
+iframe{
+width:100%;height:350px;
+border:none;border-radius:15px
+}
+@media(max-width:768px){
+nav{display:none}
+.overlay h1{font-size:38px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🏝 Visit Nkombo</div>
+<nav>
+<a href="#about">About</a>
+<a href="#gallery">Gallery</a>
+<a href="#weather">Weather</a>
+<a href="#booking">Booking</a>
+<a href="#dashboard">Dashboard</a>
+</nav>
+<button class="toggle" onclick="darkMode()">🌙</button>
+</header>
+
+<div class="slider">
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+
+<div class="overlay">
+<h1>Visit Nkombo Island</h1>
+<p>The Hidden Paradise of Lake Kivu • Rwanda</p>
+<a href="#booking" class="btn">Book Now</a>
+</div>
+</div>
+
+<section id="about">
+<h2>Welcome to Nkombo Island</h2>
+<p style="text-align:center;max-width:900px;margin:auto">
+Nkombo Island is one of Rwanda's largest inhabited islands located on beautiful Lake Kivu. Visitors enjoy Marchal Nkombo Beach, peaceful boat cruises, traditional fishing experiences, rich Amashi culture, local markets, delicious fresh fish, and unforgettable sunsets.
+</p>
+</section>
+
+<section>
+<h2>Top Attractions</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="images/beach.jpg">
+<h3>Marchal Nkombo Beach</h3>
+<p>Crystal-clear water and relaxing sandy shoreline.</p>
+</div>
+
+<div class="card">
+<img src="images/culture.jpg">
+<h3>Cultural Experience</h3>
+<p>Traditional dance, music and island hospitality.</p>
+</div>
+
+<div class="card">
+<img src="images/fishing.jpg">
+<h3>Fishing Tours</h3>
+<p>Join local fishermen on Lake Kivu.</p>
+</div>
+
+<div class="card">
+<img src="images/trading.jpg">
+<h3>Local Trading</h3>
+<p>Fresh fish, bananas and handmade crafts.</p>
+</div>
+
+</div>
+</section>
+
+<section id="gallery">
+<h2>Photo Gallery</h2>
+
+<div class="gallery">
+<img src="images/g1.jpg">
+<img src="images/g2.jpg">
+<img src="images/g3.jpg">
+<img src="images/g4.jpg">
+<img src="images/g5.jpg">
+<img src="images/g6.jpg">
+</div>
+</section>
+
+<section id="weather">
+<h2>Live Weather</h2>
+
+<div class="weather">
+<h3 id="temp">Loading...</h3>
+<p id="wind"></p>
+<p id="time"></p>
+</div>
+</section>
+
+<section>
+<h2>Find Nkombo Island</h2>
+
+<iframe src="https://maps.google.com/maps?q=Nkombo%20Island%20Rwanda&t=&z=12&ie=UTF8&iwloc=&output=embed"></iframe>
+</section>
+
+<section>
+<h2>Online Payment</h2>
+
+<div class="payment">
+
+<div class="pay">
+<h3>MTN Mobile Money</h3>
+<input placeholder="Phone Number">
+<input placeholder="Amount (USD)">
+<button onclick="alert('Payment request sent')">Pay</button>
+</div>
+
+<div class="pay">
+<h3>Visa / MasterCard</h3>
+<input placeholder="Card Number">
+<input placeholder="Expiry Date">
+<input placeholder="CVV">
+<button onclick="alert('Secure payment demo')">Pay Securely</button>
+</div>
+
+</div>
+</section>
+
+<section id="booking">
+<h2>Book Your Trip</h2>
+
+<form id="bookForm"
+action="https://formsubmit.co/davidimanishimwe29@gmail.com"
+method="POST">
+
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_subject" value="New Nkombo Island Booking">
+
+<input name="Full Name" placeholder="Full Name" required>
+<input type="email" name="Email" placeholder="Email" required>
+<input name="Phone" placeholder="Phone Number" required>
+<input type="date" name="Arrival Date" required>
+
+<select name="Package">
+<option>Beach Tour</option>
+<option>Fishing Tour</option>
+<option>Culture Experience</option>
+<option>Luxury Weekend</option>
+</select>
+
+<input type="number" name="Visitors" placeholder="Visitors" required>
+
+<textarea name="Message" rows="5"
+placeholder="Special request..."></textarea>
+
+<button type="submit">Send Booking</button>
+
+</form>
+</section>
+
+<section id="dashboard">
+<h2>Admin Dashboard</h2>
+
+<div class="dashboard">
+
+<div class="stats">
+<div>
+<h1 id="visits">0</h1>
+<p>Visitors</p>
+</div>
+
+<div>
+<h1 id="bookings">0</h1>
+<p>Bookings</p>
+</div>
+
+<div>
+<h1>24/7</h1>
+<p>Support</p>
+</div>
+</div>
+
+<hr style="margin:20px 0">
+
+<h3>Recent Booking (Local Demo)</h3>
+
+<p id="recent">No booking yet.</p>
+
+</div>
+</section>
+
+<footer>
+<h2>Visit Nkombo Island</h2>
+<p>Lake Kivu • Rusizi District • Rwanda</p>
+<p>📧 davidimanishimwe29@gmail.com</p>
+<p>Website Editor & Developer: <b>David Imanishimwe</b></p>
+<p>© 2026 All Rights Reserved</p>
+</footer>
+
+<script>
+function darkMode(){
+document.body.classList.toggle("dark");
+}
+fetch("https://api.open-meteo.com/v1/forecast?latitude=-2.44&longitude=28.97&current_weather=true")
+.then(r=>r.json())
+.then(d=>{
+document.getElementById("temp").innerHTML=
+"🌤 "+d.current_weather.temperature+" °C";
+document.getElementById("wind").innerHTML=
+"Wind: "+d.current_weather.windspeed+" km/h";
+document.getElementById("time").innerHTML=
+"Updated: "+d.current_weather.time;
+});
+let v=localStorage.getItem("visits")||0;
+v++;
+localStorage.setItem("visits",v);
+document.getElementById("visits").innerHTML=v;
+let b=localStorage.getItem("bookings")||0;
+document.getElementById("bookings").innerHTML=b;
+document.getElementById("bookForm").addEventListener("submit",function(){
+b++;
+localStorage.setItem("bookings",b);
+document.getElementById("bookings").innerHTML=b;
+let name=this.querySelector("input").value;
+document.getElementById("recent").innerHTML=name;
+localStorage.setItem("recent",name);
+});
+let r=localStorage.getItem("recent");
+if(r) document.getElementById("recent").innerHTML=r;
+</script>
+
+</body>
+</html>
