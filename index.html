@@ -1,376 +1,1616 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Visit Nkombo Island | David Imanishimwe</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nkombo Island</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+rel="stylesheet">
+
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-html{scroll-behavior:smooth}
-body{background:#f5f7fa;color:#222;transition:.4s}
-body.dark{background:#0d1b2a;color:#eee}
+
+/* ==============================
+   GENERAL
+============================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#081421;
+    color:#fff;
+    transition:.3s;
+}
+
+body.light{
+    background:#f4f7fb;
+    color:#111;
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
 header{
-position:fixed;top:0;width:100%;
-display:flex;justify-content:space-between;
-align-items:center;padding:15px 8%;
-background:rgba(0,0,0,.75);
-z-index:1000
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:18px 8%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(10px);
+
+    z-index:999;
 }
-.logo{color:#fff;font-size:28px;font-weight:700}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#ffd166;
+}
+
 nav a{
-color:white;text-decoration:none;
-margin:0 10px;font-size:15px
+    color:#fff;
+    text-decoration:none;
+    margin-left:20px;
 }
-.toggle{
-background:#00b4d8;color:#fff;border:none;
-padding:8px 15px;border-radius:20px;
-cursor:pointer
+
+nav a:hover{
+    color:#ffd166;
 }
-.slider{
-height:100vh;overflow:hidden;position:relative
+
+
+/* ==============================
+   HOME IMAGE SLIDER
+============================== */
+
+.hero{
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
-.slide{
-position:absolute;width:100%;height:100%;
-background-size:cover;background-position:center;
-animation:fade 18s infinite
+
+
+/* Individual slides */
+
+.hero-slide{
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    top:0;
+    left:0;
+
+    opacity:0;
+
+    transform:scale(1.05);
+
+    transition:
+        opacity 1.2s ease-in-out,
+        transform 6s ease-in-out;
 }
-.slide:nth-child(1){
-background-image:url("images/hero1.jpg");
-animation-delay:0s}
-.slide:nth-child(2){
-background-image:url("images/hero2.jpg");
-animation-delay:6s}
-.slide:nth-child(3){
-background-image:url("images/hero3.jpg");
-animation-delay:12s}
-@keyframes fade{
-0%,100%{opacity:0}
-10%,30%{opacity:1}
-40%{opacity:0}
+
+
+/* Active slide */
+
+.hero-slide.active{
+    opacity:1;
+    transform:scale(1);
 }
-.overlay{
-position:absolute;inset:0;
-background:rgba(0,0,0,.45);
-display:flex;flex-direction:column;
-justify-content:center;align-items:center;
-color:white;text-align:center;padding:20px
+
+
+/* Images */
+
+.hero-slide img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
 }
-.overlay h1{font-size:55px}
-.overlay p{margin:20px;font-size:20px}
+
+
+/* Dark overlay */
+
+.hero-overlay{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.65)
+    );
+
+    z-index:2;
+}
+
+
+/* Hero content */
+
+.hero-content{
+    position:relative;
+
+    z-index:5;
+
+    width:90%;
+    max-width:900px;
+}
+
+.hero-content h1{
+    font-size:65px;
+    text-shadow:2px 2px 8px #000;
+
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:20px;
+    line-height:1.7;
+
+    margin:10px 0;
+
+    text-shadow:2px 2px 5px #000;
+}
+
+
+/* Button */
+
 .btn{
-background:#0096c7;color:white;
-padding:14px 28px;border-radius:40px;
-text-decoration:none
+    display:inline-block;
+
+    background:#ffd166;
+    color:#111;
+
+    padding:15px 35px;
+
+    border-radius:30px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    margin-top:20px;
+
+    transition:.3s;
 }
-section{padding:80px 8%}
+
+.btn:hover{
+    background:#00b4d8;
+    color:#fff;
+}
+
+
+/* ==============================
+   SLIDER ARROWS
+============================== */
+
+.slider-btn{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    z-index:10;
+
+    width:50px;
+    height:50px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.7);
+
+    color:#111;
+
+    font-size:25px;
+
+    cursor:pointer;
+}
+
+.slider-btn:hover{
+    background:#fff;
+}
+
+.prev{
+    left:25px;
+}
+
+.next{
+    right:25px;
+}
+
+
+/* ==============================
+   SLIDER DOTS
+============================== */
+
+.slider-dots{
+
+    position:absolute;
+
+    bottom:30px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:10;
+
+    display:flex;
+
+    gap:10px;
+}
+
+.slider-dot{
+
+    width:13px;
+    height:13px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.6);
+
+    cursor:pointer;
+}
+
+.slider-dot.active{
+    background:#ffd166;
+
+    transform:scale(1.3);
+}
+
+
+/* ==============================
+   SECTIONS
+============================== */
+
+section{
+    padding:90px 8%;
+}
+
 h2{
-text-align:center;margin-bottom:30px;
-color:#0077b6
+    text-align:center;
+    margin-bottom:30px;
 }
+
+
+/* ==============================
+   CARDS
+============================== */
+
 .cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
 }
+
 .card{
-background:white;border-radius:15px;
-overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,.15)
+    background:#102135;
+
+    border-radius:15px;
+
+    overflow:hidden;
 }
-body.dark .card{background:#1b263b}
+
 .card img{
-width:100%;height:200px;object-fit:cover
+    width:100%;
+    height:180px;
+
+    object-fit:cover;
 }
-.card h3{padding:15px}
-.card p{padding:0 15px 20px}
+
+.card h3,
+.card p{
+    padding:15px;
+}
+
+
+/* ==============================
+   GALLERY
+============================== */
+
 .gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:12px
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:15px;
 }
+
 .gallery img{
-width:100%;height:170px;
-object-fit:cover;border-radius:12px
+    width:100%;
+
+    height:180px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    transition:.3s;
 }
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+
+/* ==============================
+   WEATHER
+============================== */
+
 .weather{
-max-width:500px;margin:auto;
-background:#caf0f8;padding:25px;
-border-radius:15px;text-align:center
+    background:#102135;
+
+    padding:65px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    max-width:500px;
+
+    margin:auto;
 }
-body.dark .weather{
-background:#243b55
-}
-form{
-max-width:700px;margin:auto;
-display:grid;gap:15px
-}
-input,select,textarea{
-padding:14px;border-radius:8px;
-border:1px solid #ccc
-}
-button{
-padding:15px;background:#009966;
-color:white;border:none;
-border-radius:8px;font-size:16px;
-cursor:pointer
-}
-.payment{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px
-}
-.pay{
-background:white;padding:25px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.12)
-}
-body.dark .pay{background:#1b263b}
-.dashboard{
-background:#001d3d;color:white;
-padding:25px;border-radius:15px
-}
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-text-align:center;gap:10px
-}
-footer{
-background:#001219;color:white;
-text-align:center;padding:35px
-}
+
+
+/* ==============================
+   MAP
+============================== */
+
 iframe{
-width:100%;height:350px;
-border:none;border-radius:15px
+    width:100%;
+
+    height:350px;
+
+    border:none;
+
+    border-radius:15px;
 }
+
+
+/* ==============================
+   BOOKING
+============================== */
+
+.booking{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+}
+
+form{
+    display:grid;
+
+    gap:15px;
+}
+
+input,
+select,
+textarea{
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:8px;
+
+    width:100%;
+}
+
+button{
+
+    padding:14px;
+
+    background:#00b4d8;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+}
+
+
+/* ==============================
+   ADMIN
+============================== */
+
+.dashboard{
+
+    background:#102135;
+
+    padding:25px;
+
+    border-radius:15px;
+}
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+}
+
+.stat{
+
+    background:#16314b;
+
+    padding:18px;
+
+    border-radius:10px;
+
+    text-align:center;
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer{
+
+    background:#000;
+
+    color:#cfcfcf;
+
+    padding:60px 8%;
+}
+
+.footer-container{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:40px;
+}
+
+.footer-box h2{
+
+    color:#d4a017;
+
+    font-size:18px;
+
+    margin-bottom:25px;
+}
+
+.footer-box p{
+
+    line-height:1.8;
+
+    margin-bottom:12px;
+}
+
+.footer-box a{
+
+    display:block;
+
+    color:#cfcfcf;
+
+    text-decoration:none;
+
+    margin:14px 0;
+
+    transition:.3s;
+}
+
+.footer-box a:hover{
+
+    color:#d4a017;
+
+    padding-left:6px;
+}
+
+.contact p{
+
+    margin:14px 0;
+}
+
+.contact i{
+
+    color:#ff4081;
+
+    width:22px;
+}
+
+
+/* ==============================
+   SOCIAL ICONS
+============================== */
+
+.social-icons{
+
+    margin-top:20px;
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+}
+
+.social-icons a{
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#1a1a1a;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:20px;
+
+    color:#fff;
+
+    transition:.3s;
+
+    text-decoration:none;
+}
+
+.social-icons a:hover{
+
+    transform:translateY(-5px);
+}
+
+.instagram:hover{
+    background:#E1306C;
+}
+
+.facebook:hover{
+    background:#1877F2;
+}
+
+.tiktok:hover{
+    background:#000;
+    border:1px solid #fff;
+}
+
+.youtube:hover{
+    background:#FF0000;
+}
+
+.twitter:hover{
+    background:#1DA1F2;
+}
+
+
+/* ==============================
+   FOOTER BOTTOM
+============================== */
+
+.footer-bottom{
+
+    border-top:1px solid #333;
+
+    margin-top:45px;
+
+    padding-top:25px;
+
+    text-align:center;
+
+    color:#888;
+
+    font-size:15px;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
 @media(max-width:768px){
-nav{display:none}
-.overlay h1{font-size:38px}
+
+    nav{
+        display:none;
+    }
+
+    .hero-content h1{
+        font-size:40px;
+    }
+
+    .hero-content p{
+        font-size:16px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .slider-btn{
+
+        width:40px;
+        height:40px;
+
+        font-size:20px;
+    }
+
+    .prev{
+        left:10px;
+    }
+
+    .next{
+        right:10px;
+    }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- ==============================
+     HEADER
+============================== -->
+
 <header>
-<div class="logo">🏝 Visit Nkombo</div>
+
+<div class="logo">
+    Visit Nkombo
+</div>
+
 <nav>
+
 <a href="#about">About</a>
+
 <a href="#gallery">Gallery</a>
-<a href="#weather">Weather</a>
-<a href="#booking">Booking</a>
-<a href="#dashboard">Dashboard</a>
+
+<a href="#book">Booking</a>
+
+<a href="#admin">Admin</a>
+
 </nav>
-<button class="toggle" onclick="darkMode()">🌙</button>
+
+<button onclick="document.body.classList.toggle('light')">
+    🌙
+</button>
+
 </header>
 
-<div class="slider">
-<div class="slide"></div>
-<div class="slide"></div>
-<div class="slide"></div>
 
-<div class="overlay">
-<h1>Visit Nkombo Island</h1>
-<p>The Hidden Paradise of Lake Kivu • Rwanda</p>
-<a href="#booking" class="btn">Book Now</a>
-</div>
+
+<!-- ==============================
+     HOME / IMAGE SLIDER
+============================== -->
+
+<section class="hero">
+
+
+<!-- IMAGE 1 -->
+
+<div class="hero-slide active">
+
+<img src="https://www.gorillastours.com/wp-content/uploads/2025/07/nkombo-island-rwanda.jpg"
+alt="Nkombo Island Rwanda">
+
 </div>
 
-<section id="about">
-<h2>Welcome to Nkombo Island</h2>
-<p style="text-align:center;max-width:900px;margin:auto">
-Nkombo Island is one of Rwanda's largest inhabited islands located on beautiful Lake Kivu. Visitors enjoy Marchal Nkombo Beach, peaceful boat cruises, traditional fishing experiences, rich Amashi culture, local markets, delicious fresh fish, and unforgettable sunsets.
+
+<!-- IMAGE 2 -->
+
+<div class="hero-slide">
+
+<img src="https://www.explorerwandatours.com/wp-content/uploads/2023/11/nkombo-island-residents-in-kivu-lake-they-decry-lack-of-ambulance-sam-ngendahimana.jpg"
+alt="Nkombo Island residents">
+
+</div>
+
+
+<!-- IMAGE 3 -->
+
+<div class="hero-slide">
+
+<img src="https://www.sextantiorwanda.com/wp-content/uploads/2024/08/Sextantio-Rwanda-Kivu-Lake-Nkombo-Island-Progetto-Capanne_from-above5.jpg"
+alt="Nkombo Island from above">
+
+</div>
+
+
+<!-- IMAGE 4 -->
+
+<div class="hero-slide">
+
+<img src="https://i.ytimg.com/vi/obB8wAb13hE/maxresdefault.jpg"
+alt="Nkombo Island">
+
+</div>
+
+
+<!-- IMAGE 5 -->
+
+<div class="hero-slide">
+
+<img src="https://www.ktpress.rw/wp-content/uploads/2020/02/Nkombo-5-768x432.jpg"
+alt="Nkombo Island">
+
+</div>
+
+
+<!-- IMAGE 6 -->
+
+<div class="hero-slide">
+
+<img src="https://visitlakekivu.com/wp-content/uploads/2025/02/P1480637-1024x685.jpg"
+alt="Lake Kivu">
+
+</div>
+
+
+<!-- IMAGE 7 -->
+
+<div class="hero-slide">
+
+<img src="https://tse4.mm.bing.net/th/id/OIP.KNrZ7M3uVUTPByNbmBFTJQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+alt="Nkombo Island">
+
+</div>
+
+
+<!-- IMAGE 8 -->
+
+<div class="hero-slide">
+
+<img src="https://silverparkresort.org/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-19-at-17.47.47_be6689e9.jpg"
+alt="Nkombo Island">
+
+</div>
+
+
+
+<!-- DARK OVERLAY -->
+
+<div class="hero-overlay"></div>
+
+
+
+<!-- WELCOME TEXT -->
+
+<div class="hero-content">
+
+<h1>
+    Welcome to Nkombo Island
+</h1>
+
+<p>
+    Discover the beauty, culture and community
+    of Nkombo Island, surrounded by the peaceful
+    waters of Lake Kivu.
 </p>
+
+<p>
+    Explore nature • Experience culture • Enjoy Lake Kivu
+</p>
+
+<a href="#book" class="btn">
+    Book Now
+</a>
+
+</div>
+
+
+
+<!-- DOTS -->
 </section>
 
+
+
+<!-- ==============================
+     ABOUT
+============================== -->
+
+<section id="about">
+
+<h2>
+    About Nkombo Island
+</h2>
+
+<p style="text-align:center;max-width:800px;margin:auto;line-height:1.8">
+
+Welcome to Nkombo Island, a beautiful destination
+in Rwanda surrounded by the peaceful waters of
+Lake Kivu.
+
+Nkombo offers visitors a unique experience of
+nature, local culture, community life and
+breathtaking lakeside scenery.
+
+<br><br>
+
+Come and discover the island, meet its welcoming
+people, experience its traditions and enjoy the
+beauty of Lake Kivu.
+
+<br><br>
+
+<strong>
+Nkombo Island — Where Nature, Culture, and Community Meet.
+</strong>
+
+</p>
+
+</section>
+
+
+
+<!-- ==============================
+     TOP EXPERIENCES
+============================== -->
+
 <section>
-<h2>Top Attractions</h2>
+
+<h2>
+    Top Experiences
+</h2>
 
 <div class="cards">
 
-<div class="card">
-<img src="images/beach.jpg">
-<h3>Marchal Nkombo Beach</h3>
-<p>Crystal-clear water and relaxing sandy shoreline.</p>
-</div>
 
 <div class="card">
-<img src="images/culture.jpg">
-<h3>Cultural Experience</h3>
-<p>Traditional dance, music and island hospitality.</p>
+
+<img src="https://images.pexels.com/photos/20355637/pexels-photo-20355637/free-photo-of-people-and-motorboats-on-beach-in-summer.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+
+<img src="https://www.sextantiorwanda.com/wp-content/uploads/2024/08/Sextantio-Rwanda-Kivu-Lake-Nkombo-Island-Progetto-Capanne-from-above7.jpg">
+
+<h3>
+    Marchal Beach
+</h3>
+
+<p>
+    Relax beside the beautiful waters of Lake Kivu,
+    enjoy the scenery and experience island life.
+</p>
+
 </div>
+
+
 
 <div class="card">
-<img src="images/fishing.jpg">
-<h3>Fishing Tours</h3>
-<p>Join local fishermen on Lake Kivu.</p>
+
+<img src="https://www.ktpress.rw/wp-content/uploads/2018/08/Kivu-768x506.png">
+
+<img src="https://www.fao.org/images/newsroomlibraries/stories-images/a2d1481cf902da4bfcf468e660a10c8b.jpg?sfvrsn=473b43bd_10">
+
+<h3>
+    Fishing
+</h3>
+
+<p>
+    Discover traditional fishing and meet
+    local fishermen on Lake Kivu.
+</p>
+
 </div>
+
+
 
 <div class="card">
-<img src="images/trading.jpg">
-<h3>Local Trading</h3>
-<p>Fresh fish, bananas and handmade crafts.</p>
-</div>
+
+<img src="https://miro.medium.com/v2/resize:fit:8992/1*Kit_t-sWirHnIhTILrazZg.jpeg">
+
+<img src="https://i.ytimg.com/vi/rdV4WAM8HQE/maxresdefault.jpg">
+
+<h3>
+    Culture
+</h3>
+
+<p>
+    Experience music, dance, culture and
+    the hospitality of the local community.
+</p>
 
 </div>
+
+
+</div>
+
 </section>
+
+
+
+<!-- ==============================
+     GALLERY
+============================== -->
 
 <section id="gallery">
-<h2>Photo Gallery</h2>
+
+<h2>
+    Gallery
+</h2>
 
 <div class="gallery">
-<img src="images/g1.jpg">
-<img src="images/g2.jpg">
-<img src="images/g3.jpg">
-<img src="images/g4.jpg">
-<img src="images/g5.jpg">
-<img src="images/g6.jpg">
+
+<img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/7a/3b/9f/7a3b9f7b-782b-c0e0-e557-feba8e162773/0.jpg/800x800cc.jpg">
+
+<img src="https://cdn.tuko.co.ke/images/1120/4407a21236ac24cb.jpeg?v=1">
+
+<img src="https://www.queenelizabethparkuganda.com/wp-content/uploads/2025/01/Lake-Kivu-Beach-Guide1-1-1536x989-1.webp">
+
+<img src="https://visitlakekivu.com/wp-content/uploads/2025/01/3153A8E9-2024-48B4-8C33-7BD59C5BC005-2048x1152.jpeg">
+
 </div>
+
 </section>
 
-<section id="weather">
-<h2>Live Weather</h2>
+
+
+<!-- ==============================
+     WEATHER
+============================== -->
+
+<section>
+
+<h2>
+    Live Weather
+</h2>
 
 <div class="weather">
-<h3 id="temp">Loading...</h3>
-<p id="wind"></p>
-<p id="time"></p>
+
+<h1 id="temp">
+    --°C
+</h1>
+
+<p>
+    Wind:
+    <span id="wind">--</span>
+</p>
+
+<p id="time">
+    Loading...
+</p>
+
 </div>
+
 </section>
+
+
+
+<!-- ==============================
+     GOOGLE MAPS
+============================== -->
 
 <section>
-<h2>Find Nkombo Island</h2>
 
-<iframe src="https://maps.google.com/maps?q=Nkombo%20Island%20Rwanda&t=&z=12&ie=UTF8&iwloc=&output=embed"></iframe>
+<h2>
+    Nkombo Island Location
+</h2>
+
+<iframe
+src="https://maps.google.com/maps?q=Nkombo%20Island%20Rwanda&t=&z=13&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
 </section>
 
-<section>
-<h2>Online Payment</h2>
 
-<div class="payment">
 
-<div class="pay">
-<h3>MTN Mobile Money</h3>
-<input placeholder="Phone Number">
-<input placeholder="Amount (USD)">
-<button onclick="alert('Payment request sent')">Pay</button>
-</div>
+<!-- ==============================
+     BOOKING
+============================== -->
 
-<div class="pay">
-<h3>Visa / MasterCard</h3>
-<input placeholder="Card Number">
-<input placeholder="Expiry Date">
-<input placeholder="CVV">
-<button onclick="alert('Secure payment demo')">Pay Securely</button>
-</div>
+<section id="book">
 
-</div>
-</section>
+<h2>
+    Book Your Trip
+</h2>
 
-<section id="booking">
-<h2>Book Your Trip</h2>
+<div class="booking">
 
-<form id="bookForm"
-action="https://formsubmit.co/davidimanishimwe29@gmail.com"
+
+<form action="https://formsubmit.co/davidimanishimwe29@gmail.com"
 method="POST">
 
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_subject" value="New Nkombo Island Booking">
+<input type="hidden"
+name="_captcha"
+value="false">
 
-<input name="Full Name" placeholder="Full Name" required>
-<input type="email" name="Email" placeholder="Email" required>
-<input name="Phone" placeholder="Phone Number" required>
-<input type="date" name="Arrival Date" required>
+<input type="hidden"
+name="_subject"
+value="New Nkombo Booking">
+
+<input
+name="Name"
+placeholder="Full Name"
+required>
+
+<input
+type="email"
+name="Email"
+placeholder="Email"
+required>
+
+<input
+type="date"
+name="Arrival Date"
+required>
 
 <select name="Package">
-<option>Beach Tour</option>
-<option>Fishing Tour</option>
-<option>Culture Experience</option>
-<option>Luxury Weekend</option>
+
+<option>
+    Luxury Beach
+</option>
+
+<option>
+    Fishing Tour
+</option>
+
+<option>
+    Cultural Tour
+</option>
+
 </select>
 
-<input type="number" name="Visitors" placeholder="Visitors" required>
+<textarea
+name="Message"
+placeholder="Special Request">
+</textarea>
 
-<textarea name="Message" rows="5"
-placeholder="Special request..."></textarea>
-
-<button type="submit">Send Booking</button>
+<button>
+    SEND BOOKING
+</button>
 
 </form>
+
+
+
+<div>
+
+<h3>
+    Online Payment
+</h3>
+
+<input
+placeholder="Card Number"required><br><br>
+
+<input
+placeholder="MM/YY"required>
+
+<br><br>
+
+<input
+placeholder="CVV"required>
+
+<button>
+    Pay Visa
+</button>
+
+<br><br>
+
+<input
+placeholder="MTN Number"required>
+
+<button>
+    Pay MoMo
+</button>
+
+</div>
+
+
+</div>
+
 </section>
 
-<section id="dashboard">
-<h2>Admin Dashboard</h2>
+
+
+<!-- ==============================
+     ADMIN DASHBOARD
+============================== -->
+
+<section id="admin">
+
+<h2>
+    Admin Dashboard
+</h2>
 
 <div class="dashboard">
 
+
+<div style="display:flex;gap:10px;margin-bottom:20px">
+
+<input
+id="user"
+placeholder="David Admin"Required>
+
+<input
+id="pass"
+type="password"
+placeholder="************"required>
+
+<button onclick="login()">
+    Login
+</button>
+
+</div>
+
+
+<div id="panel" style="display:none">
+
+
 <div class="stats">
-<div>
-<h1 id="visits">0</h1>
-<p>Visitors</p>
-</div>
 
-<div>
-<h1 id="bookings">0</h1>
-<p>Bookings</p>
-</div>
 
-<div>
-<h1>24/7</h1>
-<p>Support</p>
-</div>
-</div>
+<div class="stat">
 
-<hr style="margin:20px 0">
+<h3 id="v">
+    0
+</h3>
 
-<h3>Recent Booking (Local Demo)</h3>
-
-<p id="recent">No booking yet.</p>
+<small>
+    Visitors
+</small>
 
 </div>
+
+
+<div class="stat">
+
+<h3 id="b">
+    0
+</h3>
+
+<small>
+    Bookings
+</small>
+
+</div>
+
+
+<div class="stat">
+
+<h3>
+    $12K
+</h3>
+
+<small>
+    Revenue
+</small>
+
+</div>
+
+
+<div class="stat">
+
+<h3>
+    98%
+</h3>
+
+<small>
+    Rating
+</small>
+
+</div>
+
+
+</div>
+
+
+
+<table style="margin-top:25px">
+
+<tr>
+<th>Name</th>
+<th>Package</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>John</td>
+<td>Beach</td>
+<td>Paid</td>
+</tr>
+
+<tr>
+<td>Aline</td>
+<td>Fishing</td>
+<td>Pending</td>
+</tr>
+
+<tr>
+<td>Eric</td>
+<td>Culture</td>
+<td>Confirmed</td>
+</tr>
+
+</table>
+
+
+</div>
+
+</div>
+
 </section>
 
+
+
+<!-- ==============================
+     FOOTER
+============================== -->
+
 <footer>
-<h2>Visit Nkombo Island</h2>
-<p>Lake Kivu • Rusizi District • Rwanda</p>
-<p>📧 davidimanishimwe29@gmail.com</p>
-<p>Website Editor & Developer: <b>David Imanishimwe</b></p>
-<p>© 2026 All Rights Reserved</p>
+
+<div class="footer-container">
+
+
+<div class="footer-box">
+
+<h2>
+    VISIT NKOMBO ISLAND
+</h2>
+
+<p>
+    Discover the beauty of Nkombo Island,
+    traditional fishing, cultural dance,
+    peaceful villages and unforgettable
+    sunsets on Lake Kivu.
+</p>
+
+<p>
+    Luxury Beach • Culture • Fishing • Lake Kivu
+</p>
+
+</div>
+
+
+
+<div class="footer-box contact">
+
+<h2>
+    Contact
+</h2>
+
+<p>
+<i class="fas fa-location-dot"></i>
+Rwanda,  Rusizi, West
+</p>
+
+<p>
+<i class="fas fa-phone"></i>
++250 781 340 778
+</p>
+
+<p>
+<i class="fas fa-envelope"></i>
+info@visitnkomboisland.com
+</p>
+
+
+
+<div class="social-icons">
+
+
+<a href="https://instagram.com/visitnkomboisland"
+target="_blank"
+class="instagram">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+
+
+<a href="https://facebook.com/visitnkomboisland"
+target="_blank"
+class="facebook">
+
+<i class="fab fa-facebook-f"></i>
+
+</a>
+
+
+
+<a href="https://www.tiktok.com/@mr_mindi1/video/7630487287226256660"
+target="_blank"
+class="tiktok">
+
+<i class="fab fa-tiktok"></i>
+
+</a>
+
+
+
+<a href="https://www.youtube.com/watch?v=mxJ9HRgQgDM"
+target="_blank"
+class="youtube">
+
+<i class="fab fa-youtube"></i>
+
+</a>
+
+
+
+<a href="https://x.com/visitnkomboisland"
+target="_blank"
+class="twitter">
+
+<i class="fab fa-x-twitter"></i>
+
+</a>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="footer-bottom">
+
+© 2026 Visit Nkombo Island. All Rights Reserved.
+
+<br>
+
+Done & Edited by David Imanishimwe
+
+<br>
+
+Tel: +250 789 600 279
+
+</div>
+
 </footer>
 
+
+
+<!-- ==============================
+     JAVASCRIPT
+============================== -->
+
 <script>
-function darkMode(){
-document.body.classList.toggle("dark");
+
+
+/* ==============================
+   IMAGE SLIDER
+============================== */
+
+let slideIndex = 0;
+
+const slides =
+document.querySelectorAll(".hero-slide");
+
+const dots =
+document.querySelectorAll(".slider-dot");
+
+
+function showSlide(index){
+
+    if(index >= slides.length){
+        slideIndex = 0;
+    }
+
+    if(index < 0){
+        slideIndex = slides.length - 1;
+    }
+
+
+    slides.forEach(function(slide){
+
+        slide.classList.remove("active");
+
+    });
+
+
+    dots.forEach(function(dot){
+
+        dot.classList.remove("active");
+
+    });
+
+
+    slides[slideIndex]
+    .classList.add("active");
+
+
+    dots[slideIndex]
+    .classList.add("active");
+
 }
-fetch("https://api.open-meteo.com/v1/forecast?latitude=-2.44&longitude=28.97&current_weather=true")
-.then(r=>r.json())
-.then(d=>{
-document.getElementById("temp").innerHTML=
-"🌤 "+d.current_weather.temperature+" °C";
-document.getElementById("wind").innerHTML=
-"Wind: "+d.current_weather.windspeed+" km/h";
-document.getElementById("time").innerHTML=
-"Updated: "+d.current_weather.time;
+
+
+function changeSlide(direction){
+
+    slideIndex += direction;
+
+    showSlide(slideIndex);
+
+}
+
+
+function goToSlide(index){
+
+    slideIndex = index;
+
+    showSlide(slideIndex);
+
+}
+
+
+/* Change image every 5 seconds */
+
+setInterval(function(){
+
+    slideIndex++;
+
+    showSlide(slideIndex);
+
+},5000);
+
+
+
+/* ==============================
+   VISITOR COUNTER
+============================== */
+
+let visits =
+localStorage.getItem("visits") || 0;
+
+visits++;
+
+localStorage.setItem("visits",visits);
+
+
+
+/* ==============================
+   BOOKING COUNTER
+============================== */
+
+let books =
+localStorage.getItem("books") || 0;
+
+
+document.getElementById("v")
+.innerHTML = visits;
+
+document.getElementById("b")
+.innerHTML = books;
+
+
+
+/* ==============================
+   WEATHER
+============================== */
+
+async function weather(){
+
+try{
+
+const r = await fetch(
+"https://api.open-meteo.com/v1/forecast?latitude=-2.44&longitude=28.97&current_weather=true"
+);
+
+const d = await r.json();
+
+
+document.getElementById("temp")
+.innerHTML =
+d.current_weather.temperature + "°C";
+
+
+document.getElementById("wind")
+.innerHTML =
+d.current_weather.windspeed + " km/h";
+
+
+document.getElementById("time")
+.innerHTML =
+d.current_weather.time;
+
+
+}catch(error){
+
+console.log("Weather unavailable");
+
+}
+
+}
+
+weather();
+
+
+
+/* ==============================
+   ADMIN LOGIN
+============================== */
+
+function login(){
+
+const username =
+document.getElementById("user").value;
+
+const password =
+document.getElementById("pass").value;
+
+
+if(username === "David" &&
+password === "Nkombo2026"){
+
+document.getElementById("panel")
+.style.display = "block";
+
+alert("Welcome David");
+
+}else{
+
+alert("Wrong Login");
+
+}
+
+}
+
+
+
+/* ==============================
+   BOOKING COUNT
+============================== */
+
+document.querySelector("form")
+.addEventListener("submit",function(){
+
+books++;
+
+localStorage.setItem("books",books);
+
 });
-let v=localStorage.getItem("visits")||0;
-v++;
-localStorage.setItem("visits",v);
-document.getElementById("visits").innerHTML=v;
-let b=localStorage.getItem("bookings")||0;
-document.getElementById("bookings").innerHTML=b;
-document.getElementById("bookForm").addEventListener("submit",function(){
-b++;
-localStorage.setItem("bookings",b);
-document.getElementById("bookings").innerHTML=b;
-let name=this.querySelector("input").value;
-document.getElementById("recent").innerHTML=name;
-localStorage.setItem("recent",name);
-});
-let r=localStorage.getItem("recent");
-if(r) document.getElementById("recent").innerHTML=r;
+
 </script>
+
 
 </body>
 </html>
