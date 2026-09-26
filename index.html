@@ -688,6 +688,29 @@ footer{
         right:10px;
     }
 }
+   .whatsapp-chat{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:65px;
+    height:65px;
+    background:#25D366;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+    text-decoration:none;
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+    z-index:9999;
+    transition:.3s;
+}
+
+.whatsapp-chat:hover{
+    transform:scale(1.1);
+    background:#1ebe5d;
+}
 
 </style>
 
@@ -1276,7 +1299,12 @@ placeholder="************"required>
 
 </section>
 
-
+<a href="https://wa.me/250789600279?text=Hello%20David,%20I%20want%20to%20book%20a%20trip%20to%20Nkombo%20Island."
+   class="whatsapp-chat"
+   target="_blank"
+   title="Chat on WhatsApp">
+   <i class="fab fa-whatsapp"></i>
+</a>
 
 <!-- ==============================
      FOOTER
